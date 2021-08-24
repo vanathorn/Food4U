@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-//import 'package:food4u/utility/myservice.dart';
 import 'package:food4u/utility/mystyle.dart';
 import 'package:food4u/utility/signOut.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -15,7 +14,7 @@ class _MainUserState extends State<MainUser> {
   @override
   void initState() {
     super.initState();
-    findUser();
+    findUser(); 
   }
 
   Future<Null> findUser() async {

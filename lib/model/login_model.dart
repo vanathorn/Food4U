@@ -1,4 +1,4 @@
-class UserModel {
+class LoginModel {
   String mbid;
   String mbname;
   String psw;
@@ -7,18 +7,31 @@ class UserModel {
   String mbtid;
   String mbtcode;
   String mbtname;
+  String ccode;
+  String servername;
+  String dbname;
+  String userauthen;
+  String pswauthen;
+  String strconn;
 
-  UserModel(
+  LoginModel(
       {this.mbid,
       this.mbname,
       this.psw,
       this.mobile,
       this.email,
       this.mbtid,
-      this.mbtcode}
+      this.mbtcode,
+      this.mbtname,
+      this.ccode,
+      this.servername,
+      this.dbname,
+      this.userauthen,
+      this.pswauthen,
+      this.strconn}
   );
 
-  UserModel.fromJson(Map<String, dynamic> json) {
+  LoginModel.fromJson(Map<String, dynamic> json) {
     mbid = json['mbid'];
     mbname = json['mbname'];
     psw = json['Psw'];
@@ -27,6 +40,12 @@ class UserModel {
     mbtid = json['mbtid'];
     mbtcode = json['mbtcode'];
     mbtname = json['mbtname'];
+    ccode = json['ccode'];
+    servername = json['servername'];
+    dbname = json['dbname'];
+    userauthen = json['userauthen'];
+    pswauthen = json['pswauthen'];
+    strconn = json['strconn'];
   }
 
   Map<String, dynamic> toJson() {
@@ -39,6 +58,12 @@ class UserModel {
     data['mbtid'] = this.mbtid;
     data['mbtcode'] = this.mbtcode;
     data['mbtname'] = this.mbtname;
+    data['ccode'] = this.ccode;
+    data['servername'] = this.servername;
+    data['dbname'] = this.dbname;
+    data['userauthen'] = this.userauthen;
+    data['pswauthen'] = this.pswauthen;
+    data['strconn'] = this.strconn;
     return data;
   }
 }

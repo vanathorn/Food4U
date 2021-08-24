@@ -5,6 +5,7 @@ import 'package:food4u/model/user_model.dart';
 import 'package:food4u/screen/main_rider.dart';
 import 'package:food4u/screen/main_shop.dart';
 import 'package:food4u/screen/main_user.dart';
+import 'package:food4u/utility/my_constant.dart';
 import 'package:food4u/utility/mystyle.dart';
 import 'package:food4u/utility/myutil.dart';
 import 'package:food4u/utility/dialig.dart';
@@ -72,12 +73,12 @@ class _SignInState extends State<SignIn> {
         color: Colors.white70,
       ),
       margin: EdgeInsets.only(top: 5),
-      width: screen * 0.75,
+      width: screen * 0.75, height : 64,
       child: TextField(
         keyboardType: TextInputType.number,
         onChanged: (value) => mobile = value.trim(),
         decoration: InputDecoration(
-          hintStyle: TextStyle(color: MyStyle().hintcolor),
+          hintStyle: TextStyle(color: MyStyle().hintcolor, fontSize: 15),
           hintText: 'มือถือ',
           prefixIcon: Icon(Icons.person, color: MyStyle().darkcolor),
           enabledBorder: OutlineInputBorder(
@@ -91,7 +92,7 @@ class _SignInState extends State<SignIn> {
         cursorColor: Color(0xffffffff),
         style: GoogleFonts.kanit(
             fontStyle: FontStyle.normal,
-            fontSize: 22,
+            fontSize: 16,
             fontWeight: FontWeight.normal,
             color: Color(0xff000000)),
       ),
@@ -105,12 +106,12 @@ class _SignInState extends State<SignIn> {
         color: Colors.white70,
       ),
       margin: EdgeInsets.only(top: 10),
-      width: screen * 0.75,
+      width: screen * 0.75, height : 64,
       child: TextField(
         onChanged: (value) => password = value.trim(),
         obscureText: redeye,
         decoration: InputDecoration(
-          hintStyle: TextStyle(color: MyStyle().hintcolor),
+          hintStyle: TextStyle(color: MyStyle().hintcolor, fontSize: 15),
           hintText: 'รหัส',
           prefixIcon: Icon(Icons.lock, color: MyStyle().darkcolor),
           suffixIcon: IconButton(
@@ -134,7 +135,7 @@ class _SignInState extends State<SignIn> {
         cursorColor: Color(0xffffffff),
         style: GoogleFonts.kanit(
             fontStyle: FontStyle.normal,
-            fontSize: 22,
+            fontSize: 16,
             fontWeight: FontWeight.normal,
             color: Color(0xff000000)),
       ),
@@ -168,14 +169,14 @@ class _SignInState extends State<SignIn> {
           'สมัครใหม่',
           style: GoogleFonts.kanit(
               fontStyle: FontStyle.normal,
-              fontSize: 22,
+              fontSize: 20,
               fontWeight: FontWeight.normal,
               color: MyStyle().blackcolor),
         ),
       );
 
   Future<Null> checkAuthen() async {
-    String url = 'http://27.254.206.234/F4uApi/checkLogin.aspx?Mobile=' +
+    String url = '${MyConstant().domain}/F4uApi/checkLogin.aspx?Mobile=' +
         mobile +
         '&Psw=' +
         password;
@@ -186,13 +187,13 @@ class _SignInState extends State<SignIn> {
         alertDialog(context, '!มือถือ หรือ รหัสไม่ถูกต้อง');
       } else {
         var result = json.decode(response.data);
-        print('result = $result');
+        //print('result = $result');
         for (var map in result) {
           UserModel usermodel = UserModel.fromJson(map);
           //print('usermodel = $usermodel');
           if (mobile == usermodel.mobile && password == usermodel.psw) {
             String chooseType = usermodel.mbtname;
-            print('chooseType = $chooseType');
+            //print('chooseType = $chooseType');
             if (chooseType=='User'){
               routeToService(MainUser(), usermodel);
             }else if (chooseType=='Rider'){
@@ -218,6 +219,7 @@ class _SignInState extends State<SignIn> {
     prefs.setString('pid', userModel.mbid);
     prefs.setString('pchooseType', userModel.mbtname);
     prefs.setString('pname', userModel.mbname);
+    prefs.setString('pmobile', userModel.mobile);
 
     MaterialPageRoute route = MaterialPageRoute(builder: (context) => myWidget,);
     Navigator.pushAndRemoveUntil(context, route, (route) => false);

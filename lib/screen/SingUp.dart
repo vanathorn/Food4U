@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:food4u/utility/my_constant.dart';
 import 'package:food4u/utility/mystyle.dart';
 import 'package:food4u/utility/myutil.dart';
 import 'package:food4u/utility/dialig.dart';
@@ -73,7 +74,7 @@ class _SignUpState extends State<SignUp> {
   }
 
   Text buildMemberType(){
-    return MyStyle().txtstyle('ประเภทสมาขิก', MyStyle().primarycolor, 22);
+    return MyStyle().txtstyle('ประเภทสมาขิก', MyStyle().primarycolor, 20);
   }
   //User Radio
   Widget userRadio() => Row(
@@ -147,12 +148,12 @@ class _SignUpState extends State<SignUp> {
         color: Colors.white70,
       ),
       margin: EdgeInsets.only(top: 5),
-      width: screen * 0.75,
+      width: screen * 0.75, height : 64,
       child: TextField(
         keyboardType: TextInputType.emailAddress,
         onChanged: (value) => user = value.trim(),
         decoration: InputDecoration(
-          hintStyle: TextStyle(color: MyStyle().hintcolor),
+          hintStyle: TextStyle(color: MyStyle().hintcolor, fontSize: 15),
           hintText: 'ชื่อ',
           prefixIcon: Icon(Icons.person, color: MyStyle().darkcolor),
           enabledBorder: OutlineInputBorder(
@@ -166,7 +167,7 @@ class _SignUpState extends State<SignUp> {
         cursorColor: Color(0xffffffff),
         style: GoogleFonts.kanit(
             fontStyle: FontStyle.normal,
-            fontSize: 22,
+            fontSize: 16,
             fontWeight: FontWeight.normal,
             color: Color(0xff000000)),
       ),
@@ -180,12 +181,12 @@ class _SignUpState extends State<SignUp> {
       color: Colors.white70,
     ),
     margin: EdgeInsets.only(top: 8),
-    width: screen * 0.75,
+    width: screen * 0.75, height : 64,
     child: TextField(
       keyboardType: TextInputType.number,
       onChanged: (value) => mobile = value.trim(),
       decoration: InputDecoration(
-        hintStyle: TextStyle(color: MyStyle().hintcolor),
+        hintStyle: TextStyle(color: MyStyle().hintcolor, fontSize: 15),
         hintText: 'มือถือ',
         prefixIcon: Icon(Icons.mobile_friendly, color: MyStyle().darkcolor),
         enabledBorder: OutlineInputBorder(
@@ -199,7 +200,7 @@ class _SignUpState extends State<SignUp> {
       cursorColor: Color(0xffffffff),
       style: GoogleFonts.kanit(
           fontStyle: FontStyle.normal,
-          fontSize: 22,
+          fontSize: 16,
           fontWeight: FontWeight.normal,
           color: Color(0xff000000)),
     ),
@@ -213,12 +214,12 @@ class _SignUpState extends State<SignUp> {
         color: Colors.white70,
       ),
       margin: EdgeInsets.only(top: 8),
-      width: screen * 0.75,
+      width: screen * 0.75, height : 64,
       child: TextField(
         onChanged: (value) => password = value.trim(),
         obscureText: redeye,
         decoration: InputDecoration(
-          hintStyle: TextStyle(color: MyStyle().hintcolor),
+          hintStyle: TextStyle(color: MyStyle().hintcolor, fontSize: 15),
           hintText: 'รหัส',
           prefixIcon: Icon(Icons.lock, color: MyStyle().darkcolor),
           suffixIcon: IconButton(
@@ -242,7 +243,7 @@ class _SignUpState extends State<SignUp> {
         cursorColor: Color(0xffffffff),
         style: GoogleFonts.kanit(
             fontStyle: FontStyle.normal,
-            fontSize: 22,
+            fontSize: 16,
             fontWeight: FontWeight.normal,
             color: Color(0xff000000)),
       ),
@@ -279,7 +280,7 @@ class _SignUpState extends State<SignUp> {
   } 
   
   Future<Null> checkUser() async {
-    String url = 'http://27.254.206.234/F4uApi/JsonCheckMobile.aspx?Mobile='+mobile;
+    String url = '${MyConstant().domain}F4uApi/JsonCheckMobile.aspx?Mobile='+mobile;
     try{
       Response response = await Dio().get(url);
       //print('*****response =  $response');
@@ -295,8 +296,7 @@ class _SignUpState extends State<SignUp> {
   }
 
   Future<Null> registerTread() async {
-    String url='http://27.254.206.234/F4uApi/insertUser.aspx?Name='+user+'&Psw='+password+'&Mobile='+mobile+'&cType='+choosetype;
-              //http://27.254.206.234/F4uApi/insertUser.aspx?Name=gino&Psw=1234&Mobile=0863836099&cType=U
+    String url='${MyConstant().domain}/F4uApi/insertUser.aspx?Name='+user+'&Psw='+password+'&Mobile='+mobile+'&cType='+choosetype;
     try{      
       Response response = await Dio().get(url);
       print('*****response =  $response');

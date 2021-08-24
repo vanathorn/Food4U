@@ -14,6 +14,10 @@ class MyStyle {
   Color hintcolor = Color(0xffb8bbbc);
   Color logocolor = Color(0xff0a0a77);
 
+  Widget showProgress(){
+    return Center(child: CircularProgressIndicator());
+  }
+
   Widget txtbrandsty(String strtxt) => Text(strtxt,
       style: GoogleFonts.lato(
           fontStyle: FontStyle.normal,
@@ -53,7 +57,7 @@ class MyStyle {
   Widget titleDrawer(String strtxt) => Text(strtxt,
       style: GoogleFonts.kanit(
         fontStyle: FontStyle.normal,
-        fontSize: 20,
+        fontSize: 18,
         fontWeight: FontWeight.normal,
         color: Color(0xff000000),
       ));
@@ -85,7 +89,7 @@ class MyStyle {
   Widget titleDark(String strtxt) => Text(strtxt,
       style: GoogleFonts.kanit(
         fontStyle: FontStyle.normal,
-        fontSize: 22,
+        fontSize: 18,
         fontWeight: FontWeight.normal,
         color: Color(0xff000000),
       ));
@@ -93,7 +97,7 @@ class MyStyle {
   Widget subtitleDark(String strtxt) => Text(strtxt,
       style: GoogleFonts.kanit(
         fontStyle: FontStyle.normal,
-        fontSize: 18,
+        fontSize: 15,
         fontWeight: FontWeight.normal,
         color: Colors.black26,
       ));
@@ -101,7 +105,7 @@ class MyStyle {
   Widget titleLight(String strtxt) => Text(strtxt,
       style: GoogleFonts.kanit(
         fontStyle: FontStyle.normal,
-        fontSize: 22,
+        fontSize: 18,
         fontWeight: FontWeight.normal,
         color: Color(0xffffffff),
       ));
@@ -109,7 +113,7 @@ class MyStyle {
   Widget subtitleLight(String strtxt) => Text(strtxt,
       style: GoogleFonts.kanit(
         fontStyle: FontStyle.normal,
-        fontSize: 20,
+        fontSize: 15,
         fontWeight: FontWeight.normal,
         color: Colors.white54,
       ));
@@ -125,7 +129,7 @@ class MyStyle {
   Widget signout(String strtxt) => Text(strtxt,
       style: GoogleFonts.kanit(
           fontStyle: FontStyle.normal,
-          fontSize: 28,
+          fontSize: 18,
           fontWeight: FontWeight.normal,
           color: Color(0xffffffff),
           fontFeatures: [
@@ -135,7 +139,7 @@ class MyStyle {
   Widget subSignout(String strtxt) => Text(strtxt,
       style: TextStyle(
         fontFamily: 'thaisanslite',
-        fontSize: 26,
+        fontSize: 15,
         fontWeight: FontWeight.normal,
         color: Colors.white70,
       ));
@@ -143,7 +147,7 @@ class MyStyle {
   Widget txtTH(String strtxt, Color txtcolor) => Text(strtxt,
       style: TextStyle(
         fontFamily: 'thaisanslite',
-        fontSize: 24,
+        fontSize: 18,
         fontWeight: FontWeight.normal,
         color: txtcolor,
       ));
@@ -151,39 +155,39 @@ class MyStyle {
   Widget txtTHRed(String strtxt) => Text(strtxt,
       style: TextStyle(
         fontFamily: 'thaisanslite',
-        fontSize: 26,
+        fontSize: 18,
         fontWeight: FontWeight.normal,
         color: Colors.red.shade800,
       ));
 
   void get hintStyle => (GoogleFonts.kanit(
         fontStyle: FontStyle.normal,
-        fontSize: 24,
+        fontSize: 14,
         fontWeight: FontWeight.normal,
         color: Color(0xff000000),
       ));
 
   TextStyle errStyle() => TextStyle(
         fontFamily: 'thaisanslite',
-        fontSize: 28,
+        fontSize: 18,
         fontWeight: FontWeight.bold,
         color: Colors.red,
       );
 
   TextStyle errStyleSymbol() => TextStyle(
         fontFamily: 'Holligate',
-        fontSize: 38,
+        fontSize: 28,
         fontWeight: FontWeight.bold,
         color: Colors.red.shade700,
       );
 
   TextStyle myLabelStyle() => TextStyle(
       fontFamily: 'thaisanslite',
-      fontSize: 24,
+      fontSize: 18,
       fontWeight: FontWeight.normal,
       color: Colors.black54,
     );
-
+    
   BoxDecoration boxDecoration() => BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: Colors.white70,
